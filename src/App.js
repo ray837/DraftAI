@@ -196,38 +196,36 @@ function App() {
     setLoading(false);
   };
 
-
+  const previousBodyRef = useRef("");
 
   useEffect(() => {
-    // Ensure Office is ready
- 
     if (window.Office) {
-      // console.log(window)
       window.Office.onReady((info) => {
         if (info.host === window.Office.HostType.Outlook) {
-          // Automatically load body on ready
-          getMailBody();
+          startPollingBody(); // Start polling the email body
         }
       });
     }
   }, []);
 
-  const getMailBody = () => {
-    console.log("here")
-    window.Office.context.mailbox.item.body.getAsync(
-      "text", // or 'html' depending on what you want
-      function (asyncResult) {
-         
-        if (asyncResult.status === window.Office.AsyncResultStatus.Succeeded) {
-          const body = asyncResult.value;
-          setInput(body); // Set mail body to textarea input
-        } else {
-          console.error(asyncResult.error.message);
-        }
-      }
-    );
-  };
+  const startPollingBody = () => {
+    const interval = setInterval(() => {
+      window.Office.context.mailbox.item.body.getAsync("text", (result) => {
+        if (result.status === window.Office.AsyncResultStatus.Succeeded) {
+          const body = result.value;
 
+          if (body !== previousBodyRef.current) {
+            previousBodyRef.current = body;
+            setInput(body);
+          }
+        }
+      });
+    }, 2000); // Adjust interval (e.g., every 2 seconds)
+
+    // Clear interval on unmount
+    return () => clearInterval(interval);
+  };
+  
   return (
     <div className="App">
 
