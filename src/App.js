@@ -133,19 +133,19 @@ function App() {
       
       switch (creativity_level) {
         case 0:
-          prompt = `Proofread the following email. Only fix grammar, punctuation, and spelling errors. Do not change the sentence structure or wording unless absolutely necessary:\n\n"${input}"\n\nReturn the refined email.`;
+          prompt = `Proofread the following email. Only fix grammar, punctuation, and spelling errors. Do not change the sentence structure or wording unless absolutely necessary:\n\n"${input}"\n\nReturn the refined email body only.`;
           break;
         case 25:
-          prompt = `Refine the following email by improving its clarity and readability. Do not change the tone or intended meaning. Keep the structure intact and avoid rewording unless it enhances clarity:\n\n"${input}"\n\nReturn the improved version of the email.`;
+          prompt = `Refine the following email by improving its clarity and readability. Do not change the tone or intended meaning. Keep the structure intact and avoid rewording unless it enhances clarity:\n\n"${input}"\n\nReturn the improved version of the email body only.`;
           break;
         case 50:
-          prompt = `Improve the tone and phrasing of the following email while keeping the original meaning and structure intact. Aim for a more professional, polite, and engaging tone:\n\n"${input}"\n\nReturn the refined email.`;
+          prompt = `Improve the tone and phrasing of the following email while keeping the original meaning and structure intact. Aim for a more professional, polite, and engaging tone:\n\n"${input}"\n\nReturn the refined email body only.`;
           break;
         case 75:
-          prompt = `Polish the following email to enhance its tone, flow, and structure. You may slightly reword or rearrange sentences for better readability, while preserving the original message:\n\n"${input}"\n\nReturn the refined email.`;
+          prompt = `Polish the following email to enhance its tone, flow, and structure. You may slightly reword or rearrange sentences for better readability, while preserving the original message:\n\n"${input}"\n\nReturn the refined email body only.`;
           break;
         case 100:
-          prompt = `Rewrite the following email completely, keeping the core message and intent the same. Make it sound professional, well-structured, and impactful:\n\n"${input}"\n\nReturn the rewritten email.`;
+          prompt = `Rewrite the following email completely, keeping the core message and intent the same. Make it sound professional, well-structured, and impactful:\n\n"${input}"\n\nReturn the rewritten email body only.`;
           break;
         default:
           prompt = `Analyse the sentiment of the following mail : \n\n"${input}"\n\nReturn the sentiment.`;
