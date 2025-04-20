@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import InfoIcon from '@mui/icons-material/Info';
 import IconButton from '@mui/material/IconButton';
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useRef  } from 'react';
 import axios from 'axios';
 import { Button, Snackbar } from '@mui/material';
 // import Accordion from '@mui/material/Accordion';
@@ -198,36 +198,43 @@ function App() {
 
 
 
+  const previousBodyRef = useRef("");
+
   useEffect(() => {
-    // Ensure Office is ready
- 
+    console.log("if first out")
     if (window.Office) {
-      // console.log(window)
+      console.log("if first")
       window.Office.onReady((info) => {
+        console.log("inner outer")
         if (info.host === window.Office.HostType.Outlook) {
-          // Automatically load body on ready
-          getMailBody();
+          console.log("inner out")
+          startPollingBody(); // Start polling the email body
         }
       });
     }
   }, []);
 
-  const getMailBody = () => {
-    console.log("here")
-    window.Office.context.mailbox.item.body.getAsync(
-      "text", // or 'html' depending on what you want
-      function (asyncResult) {
-         
-        if (asyncResult.status === window.Office.AsyncResultStatus.Succeeded) {
-          const body = asyncResult.value;
-          setInput(body); // Set mail body to textarea input
-          console.log(input)
-        } else {
-          console.error(asyncResult.error.message);
+  const startPollingBody = () => {
+    const interval = setInterval(() => {
+      console.log("outer inner")
+      window.Office.context.mailbox.item.body.getAsync("text", (result) => {
+        if (result.status === window.Office.AsyncResultStatus.Succeeded) {
+          const body = result.value;
+          console.log("out inner")
+
+          if (body !== previousBodyRef.current) {
+            previousBodyRef.current = body;
+            console.log("inner")
+            setInput(body);
+          }
         }
-      }
-    );
+      });
+    }, 2000); // Adjust interval (e.g., every 2 seconds)
+
+    // Clear interval on unmount
+    return () => clearInterval(interval);
   };
+
 
   return (
     <div className="App">
