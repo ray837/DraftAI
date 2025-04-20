@@ -145,15 +145,15 @@ function App() {
       // console.log(prompt);
       // await sleep(2000);it
       const response = await axios.post(
-        'https://openrouter.ai/api/v1/chat/completions',
+       'https://openrouter.ai/api/v1/chat/completions',
         {
-          model: 'gpt-3.5-turbo',
+          model: 'openai/gpt-3.5-turbo',
           messages: [{ role: 'user', content: prompt }],
           temperature: 0.7,
         },
         {
           headers: {
-            // Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+           
             Authorization: `Bearer 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`,
             'Content-Type': 'application/json',
           },
@@ -162,8 +162,11 @@ function App() {
         
       );
     //   console.log('API KEY:', process.env.REACT_APP_OPENAI_API_KEY);
-
+    // Authorization: `Bearer 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`,
+    // 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
+  // Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
       const refined = response.data.choices[0].message.content.trim();
+      
       console.log('Refined Text:', refined);
       if (input === undefined || input === '') {
         setError('"Please write a mail first"');
