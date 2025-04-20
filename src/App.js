@@ -108,6 +108,7 @@ function App() {
   const [input, setInput] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [toggle, Settoggle] = useState(false);
   const typeText = async (text) => {
     setInput(''); // Clear textarea before typing
     for (let i = 0; i < text.length; i++) {
@@ -191,6 +192,7 @@ function App() {
         setInput(refined);
 
         showSnackbar('success',"Successfully refined mail")
+        Settoggle(true)
        
         
       }
@@ -203,6 +205,7 @@ function App() {
       console.error(err);
       showSnackbar('error',"Something went wrong. Please try again.")
       setError('Something went wrong. Please try again.');
+      
     }
 
     setLoading(false);
@@ -290,20 +293,7 @@ function App() {
 
  
   
-<Snackbar
-        open={snack.open}
-        onClose={handleClose}
-        autoHideDuration={5000}
-        message={snack.message}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        ContentProps={{
-          sx: {
-            backgroundColor: snack.bgColor,
-            color: '#fff',
-            // fontWeight: 'bold',
-          },
-        }}
-      />
+ 
      
      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
  
@@ -358,6 +348,7 @@ function App() {
   </div>
 </div> */}
      <div id="wrapper">
+     {toggle && (
       <div className='col' style={{margin:"auto"}} onClick={()=>insertInputToBody()}> 
      <Tooltip title="Insert Draft">
     <Fab size="medium"   aria-label="add" style={{
@@ -370,17 +361,33 @@ function App() {
   }}>
   <DriveFileMoveRtlIcon/>
 </Fab>
-</Tooltip>
+</Tooltip> 
 </div>
+)}
      <div className='col' style={{display :"block",marginTop:"2vh"}}>
 
      <h2 class="heading" id="padleft"><span style={{color:'#154633'}}>Write </span><span style={{color:"#95C11F"}}>Right!</span></h2>
     <p id="padleft">AI powered mail writing assistant</p>
     </div>
+    <Snackbar
+        open={snack.open}
+        onClose={handleClose}
+        autoHideDuration={5000}
+        message={snack.message}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        ContentProps={{
+          sx: {
+            backgroundColor: snack.bgColor,
+            color: '#fff',
+            // fontWeight: 'bold',
+          },
+        }}
+       
+      />
 <div class="col">
      
  
-<textarea    placeholder="Please draft a mail or Tell me what to write for you" rows="20" name="comment[text]" id="comment_text" cols="40" class={loading ? 'skeleton' : ''} value={input} onChange={(e) => setInput(e.target.value)} autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
+<textarea    placeholder="Please draft a mail or Let me i can draft for you." rows="20" name="comment[text]" id="comment_text" cols="40" class={loading ? 'skeleton' : ''} value={input} onChange={(e) => setInput(e.target.value)} autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
       
       </div>
      {/* <div class="gallery-template-item">
