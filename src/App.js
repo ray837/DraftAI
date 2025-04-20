@@ -9,13 +9,17 @@ import IconButton from '@mui/material/IconButton';
 import React, { useState,useEffect,useRef  } from 'react';
 import axios from 'axios';
 import { Button, Snackbar } from '@mui/material';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 // import Accordion from '@mui/material/Accordion';
 // import AccordionSummary from '@mui/material/AccordionSummary';
 // import AccordionDetails from '@mui/material/AccordionDetails';
 // import Typography from '@mui/material/Typography';
 // import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 // import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-
+import DriveFileMoveRtlIcon from '@mui/icons-material/DriveFileMoveRtl';
 
 function App() {
   const marks = [
@@ -98,13 +102,19 @@ function App() {
 
   const handleSliderChange = (event, newValue) => {
     setSliderValue(newValue);
-    console.log('Current slider value:', newValue);
+    // console.log('Current slider value:', newValue);
   };
 
   const [input, setInput] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
+  const typeText = async (text) => {
+    setInput(''); // Clear textarea before typing
+    for (let i = 0; i < text.length; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 20)); // Adjust delay
+      setInput((prev) => prev + text.charAt(i));
+    }
+  };
   const refineText = async () => {
     setLoading(true);
     setError('');
@@ -176,6 +186,8 @@ function App() {
         // return;
       }
       else {
+        setLoading(false);
+        await  typeText(refined);
         setInput(refined);
 
         showSnackbar('success',"Successfully refined mail")
@@ -187,8 +199,8 @@ function App() {
 
     //   setInput(refined);
     } catch (err) {
-      console.log(err)
-      // console.error(err);
+      // console.log(err)
+      console.error(err);
       showSnackbar('error',"Something went wrong. Please try again.")
       setError('Something went wrong. Please try again.');
     }
@@ -201,13 +213,13 @@ function App() {
   const previousBodyRef = useRef("");
 
   useEffect(() => {
-    console.log("if first out")
+    // console.log("if first out")
     if (window.Office) {
-      console.log("if first")
+      // console.log("if first")
       window.Office.onReady((info) => {
-        console.log("inner outer")
+        // console.log("inner outer")
         if (info.host === window.Office.HostType.Outlook) {
-          console.log("inner out")
+          // console.log("inner out")
           startPollingBody(); // Start polling the email body
         }
       });
@@ -216,30 +228,68 @@ function App() {
 
   const startPollingBody = () => {
     const interval = setInterval(() => {
-      console.log("outer inner")
+      // console.log("outer inner")
       window.Office.context.mailbox.item.body.getAsync("text", (result) => {
         if (result.status === window.Office.AsyncResultStatus.Succeeded) {
           const body = result.value;
-          console.log("out inner")
+          // console.log("out inner")
 
-          console.log(previousBodyRef.current)
+          // console.log(previousBodyRef.current)
           if (body !== previousBodyRef.current) {
             previousBodyRef.current = body;
-            console.log("inner")
+            // console.log("inner")
             setInput(body);
           }
         }
       });
-    }, 2000); // Adjust interval (e.g., every 2 seconds)
+    }, 1800); // Adjust interval (e.g., every 2 seconds)
 
     // Clear interval on unmount
     return () => clearInterval(interval);
   };
 
 
+  function insertInputToBody() {
+     
+    if (input==undefined){
+      showSnackbar('error',"No message to insert")
+      return
+    }else if(input.trim().length==0){
+      showSnackbar('error',"No message to insert")
+      return
+    }
+    try{
+    window.Office.context.mailbox.item.body.setAsync(
+      input,
+      { coercionType: "html" },
+      function (result) {
+        if (result.status === window.Office.AsyncResultStatus.Succeeded) {
+          // console.log("Draft body updated");
+          showSnackbar('success',"Inserted to mail draft")
+        } else {
+          showSnackbar('error',result.error.message)
+          // console.error(result.error.message);
+        }
+      }
+    
+    );}catch{
+      showSnackbar('error',"Issue inserting ! This feature only works with Outlook")
+      
+      navigator.clipboard.writeText(input)
+    .then(() => {
+      showSnackbar('success', "Feature only works with Outlook.Copied to clipboard instead");
+    })
+    .catch(() => {
+      showSnackbar('error', "Failed to insert and copy to clipboard.");
+    });
+    }
+  }
+
   return (
     <div className="App">
 
+ 
+  
 <Snackbar
         open={snack.open}
         onClose={handleClose}
@@ -250,7 +300,7 @@ function App() {
           sx: {
             backgroundColor: snack.bgColor,
             color: '#fff',
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
           },
         }}
       />
@@ -308,7 +358,21 @@ function App() {
   </div>
 </div> */}
      <div id="wrapper">
-     <div className='col' style={{display :"block",marginTop:"1vh"}}>
+      <div className='col' style={{margin:"auto"}} onClick={()=>insertInputToBody()}> 
+     <Tooltip title="Insert Draft">
+    <Fab size="medium"   aria-label="add" style={{
+    position: "fixed",
+    bottom: "7vw",
+    right: "7vw",
+    backgroundColor:"rgb(149, 193, 31)",
+    color:"#154633",
+    zIndex: 1000, 
+  }}>
+  <DriveFileMoveRtlIcon/>
+</Fab>
+</Tooltip>
+</div>
+     <div className='col' style={{display :"block",marginTop:"2vh"}}>
 
      <h2 class="heading" id="padleft"><span style={{color:'#154633'}}>Write </span><span style={{color:"#95C11F"}}>Right!</span></h2>
     <p id="padleft">AI powered mail writing assistant</p>
@@ -376,7 +440,7 @@ Very line.</textarea>
       
   <div class="col">
     <a   onClick={() => refineText()} class={loading ? 'btn inprogress': 'btn'}>
-      <span class="text">Refine My Mail</span>
+      <span class="text">Improve Writing</span>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.66669 11.3334L11.3334 4.66669" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.66669 4.66669H11.3334V11.3334" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
     
