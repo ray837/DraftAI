@@ -222,6 +222,7 @@ function App() {
           const body = result.value;
           console.log("out inner")
 
+          console.log(previousBodyRef.current)
           if (body !== previousBodyRef.current) {
             previousBodyRef.current = body;
             console.log("inner")
