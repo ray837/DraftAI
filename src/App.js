@@ -366,9 +366,11 @@ function App() {
 )}
      <div className='col' style={{display :"block",marginTop:"2vh"}}>
 
+  
      <h2 class="heading" id="padleft"><span style={{color:'#154633'}}>Write </span><span style={{color:"#95C11F"}}>Right!</span></h2>
+     </div>
     <p id="padleft">AI powered mail writing assistant</p>
-    </div>
+   
     <Snackbar
         open={snack.open}
         onClose={handleClose}
