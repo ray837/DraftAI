@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.c340b2d3.css",
-    "main.js": "/static/js/main.83fbf9dd.js",
-    "static/js/453.f55149b5.chunk.js": "/static/js/453.f55149b5.chunk.js",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/index.html",
-    "main.c340b2d3.css.map": "/static/css/main.c340b2d3.css.map",
-    "main.83fbf9dd.js.map": "/static/js/main.83fbf9dd.js.map",
-    "453.f55149b5.chunk.js.map": "/static/js/453.f55149b5.chunk.js.map"
+    "main.css": "/github.io/DraftAI/static/css/main.951eb5e5.css",
+    "main.js": "/github.io/DraftAI/static/js/main.55696e73.js",
+    "static/js/453.f55149b5.chunk.js": "/github.io/DraftAI/static/js/453.f55149b5.chunk.js",
+    "static/media/logo.svg": "/github.io/DraftAI/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/github.io/DraftAI/index.html",
+    "main.951eb5e5.css.map": "/github.io/DraftAI/static/css/main.951eb5e5.css.map",
+    "main.55696e73.js.map": "/github.io/DraftAI/static/js/main.55696e73.js.map",
+    "453.f55149b5.chunk.js.map": "/github.io/DraftAI/static/js/453.f55149b5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c340b2d3.css",
-    "static/js/main.83fbf9dd.js"
+    "static/css/main.951eb5e5.css",
+    "static/js/main.55696e73.js"
   ]
 }
