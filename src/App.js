@@ -146,7 +146,7 @@ function App() {
           prompt = `Polish the following email to enhance its tone, flow, and structure. You may slightly reword or rearrange sentences for better readability, while preserving the original message:\n\n"${input}"\n\nReturn the refined email body only.`;
           break;
         case 100:
-          prompt = `Rewrite the following email completely, keeping the core message and intent the same. Make it sound professional, well-structured, and impactful:\n\n"${input}"\n\nReturn the rewritten email body only.`;
+          prompt = `Rewrite the following email completely, keeping the core message and intent the same. Make it sound professional, well-structured, and impactful:\n\n"${input}"\n\nReturn the email body only.`;
           break;
         default:
           prompt = `Analyse the sentiment of the following mail : \n\n"${input}"\n\nReturn the sentiment.`;
