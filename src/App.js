@@ -93,6 +93,7 @@ function App() {
   ))({
     [`& .${tooltipClasses.tooltip}`]: {
       maxWidth: 300,
+      fontSize: '12px',
     },
   });
 
@@ -354,8 +355,8 @@ function App() {
      <Tooltip title="Insert Draft">
     <Fab size="medium"   aria-label="add" style={{
     position: "fixed",
-    bottom: "7vw",
-    right: "7vw",
+    bottom: "6vw",
+    right: "6vw",
     backgroundColor:"rgb(149, 193, 31)",
     color:"#154633",
     zIndex: 1000, 
@@ -427,9 +428,9 @@ Very line.</textarea>
       />
         </AccordionDetails>
       </Accordion> */}
-      <div style={{display:"flex" ,alignItems: "center" }} id="creativity"> <h1 >Creativity</h1>  <CustomWidthTooltip title={longText}>
-      <IconButton>
-      <InfoIcon />
+      <div style={{display:"flex" ,alignItems: "center" }} id="creativity"> <h1 >Creativity</h1>  <CustomWidthTooltip title={longText} >
+      <IconButton sx={{ width: 24, height: 24, paddingX:1.7,paddingY:2 }}>
+      <InfoIcon sx={{ fontSize: 16 }}/>
       </IconButton>
 </CustomWidthTooltip> </div> 
 <Slider
@@ -443,6 +444,18 @@ Very line.</textarea>
   valueLabelFormat={valueLabelTooltip} // Controls tooltip only
   getAriaValueText={(value) => `${value}`} // For accessibility (optional)
   id="slider"
+  sx={{
+    height: 4, // thinner track
+    '& .MuiSlider-thumb': {
+      width: 12,
+      height: 12,
+    },
+    '& .MuiSlider-valueLabel': {
+      fontSize: '10px',
+      // backgroundColor: 'primary.main',
+      padding: '2px 6px',
+    },
+  }}
 />
 
       
