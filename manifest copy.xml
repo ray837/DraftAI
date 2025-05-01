@@ -9,11 +9,11 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="WriteRight"/>
   <Description DefaultValue="Write Right with ease."/>
-  <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
+  <IconUrl DefaultValue="https://ray837.github.io/DraftAI//assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://ray837.github.io/DraftAI//assets/icon-64.png"/>
+  <!-- <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/> -->
   <AppDomains>
-    <AppDomain>www.rayidahmed.com</AppDomain>
+    <AppDomain>www.rayidahmed.netlify.app</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
@@ -26,7 +26,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://writerightplugin.netlify.app/"/>
+        <SourceLocation DefaultValue="https://ray837.github.io/DraftAI/"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -75,12 +75,12 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://ray837.github.io/DraftAI//assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://ray837.github.io/DraftAI//assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://ray837.github.io/DraftAI//assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://writerightplugin.netlify.app/"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://ray837.github.io/DraftAI/"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="CommandsGroup.Label" DefaultValue="Contoso Add-in"/>

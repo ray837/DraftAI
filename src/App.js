@@ -389,7 +389,7 @@ function App() {
 <div class="col">
      
  
-<textarea    placeholder="Please draft a mail or Let me i can draft for you." rows="20" name="comment[text]" id="comment_text" cols="40" class={loading ? 'skeleton' : ''} value={input} onChange={(e) => setInput(e.target.value)} autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
+<textarea    placeholder="Draft a mail or let me know what i can draft for you." rows="20" name="comment[text]" id="comment_text" cols="40" class={loading ? 'skeleton' : ''} value={input} onChange={(e) => setInput(e.target.value)} autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
       
       </div>
      {/* <div class="gallery-template-item">
