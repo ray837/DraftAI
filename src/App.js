@@ -262,8 +262,23 @@ function App() {
       return
     }
 
-    const htmlFormattedInput = input.replace(/\n/g, "<br/>");
+    var subject="";
+    var processedinput=""
+    if (input.toLowerCase().includes("subject:")) {
+     subject = input.split("\n",2)[0];
+     console.log(subject)
+    //  console.log(input.split("\n",2))
+    //  setInput(input.split("\n").slice(1).join("\n"));
+    //  console.log("h")
+    processedinput=input.split("\n").slice(1).join("\n")
+     console.log(processedinput)
+    }else{
+      processedinput=input
+    }
+    const htmlFormattedInput = processedinput.replace(/\n/g, "<br/>");
     try{
+      window.Office.context.mailbox.item.subject.setAsync(subject);
+
     window.Office.context.mailbox.item.body.setAsync(
       htmlFormattedInput,
       { coercionType: "html" },

@@ -15,7 +15,7 @@
   <Description DefaultValue="WriteRight is an AI-powered in-house Outlook plugin by IDFC First Bank. It helps compose, rephrase, and summarize emails directly within Outlook using a task pane interface. Includes contextual suggestions powered by AI."/>
   
   <!-- Icons used for add-in listing -->
-  <IconUrl DefaultValue="https://ray837.github.io/DraftAI/assets/icon32.png"/>
+  <IconUrl DefaultValue="https://ray837.github.io/DraftAI/assets/favicon.png"/>
   <HighResolutionIconUrl DefaultValue="https://ray837.github.io/DraftAI/assets/icon64.png"/>
 
   <!-- Optional: Help or support URL -->
