@@ -70,8 +70,7 @@ function App() {
     setSnack((prev) => ({ ...prev, open: false }));
   };
 
-  const longText = `Set creativity level according to your need , lesser level (0-2) maintains the same words and corrects only
-  grammer , higher creativity levels improvises more proficiency while keeping same context.`;
+  const longText = `Control creativity intensity — low levels apply minimal changes with grammatical corrections, high levels enable advanced rephrasing for polished, professional output.`;
   function valueLabelTooltip(value) {
     switch (value) {
       case 0:
@@ -371,7 +370,7 @@ function App() {
   
      <h2 class="heading" id="padleft"><span style={{color:'#154633'}}>Write </span><span style={{color:"#95C11F"}}>Right!</span></h2>
      </div>
-    <p id="padleft">AI powered mail writing assistant</p>
+    <p id="padleft" style={{fontSize:"2vh"}}>AI-Powered Email Writing Assistant</p>
    
     <Snackbar
         open={snack.open}
@@ -388,7 +387,7 @@ function App() {
         }}
        
       />
-<div class="col">
+<div class="col" style={{marginTop:"2vh"}}>
      
  
 <textarea    placeholder="Draft a mail or let me know what i can draft for you." rows="20" name="comment[text]" id="comment_text" cols="40" class={loading ? 'skeleton' : ''} value={input} onChange={(e) => setInput(e.target.value)} autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
@@ -407,7 +406,7 @@ Hello Test
 I would like this to be on line.
 Very line.</textarea>
       </div> */}
-     <div className='col' style={{display: "flex", alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+     <div className='col' style={{display: "flex", alignItems: 'center', justifyContent: 'center', flexDirection: 'column',marginTop:'3vh'}}>
      {/* <Accordion id= "accordion">
         <AccordionSummary
           
@@ -428,7 +427,7 @@ Very line.</textarea>
       />
         </AccordionDetails>
       </Accordion> */}
-      <div style={{display:"flex" ,alignItems: "center" }} id="creativity"> <h1   >Creativity</h1>  <CustomWidthTooltip title={longText}>
+      <div style={{display:"flex" ,alignItems: "center" }} id="creativity"> <h1 >Creativity</h1>  <CustomWidthTooltip title={longText}>
       <IconButton>
       <InfoIcon />
       </IconButton>

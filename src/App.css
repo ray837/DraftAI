@@ -369,7 +369,7 @@ p {
 
 
 #padleft{
-padding-left: 4vw;
+padding-left: 7.5vw;
 padding-bottom: 5px;
 }
 
@@ -378,8 +378,11 @@ textarea {
   margin-top: 10px;
   /* margin-lefst: 50px; */
   /* width: 500px; */
-  width: 80vw;
+  width: 75vw;
   height: 60vh;
+  max-width: 80vw;
+  min-width: 80vw;
+
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
@@ -397,9 +400,9 @@ textarea {
   font-optical-sizing: auto;
  
   font-style: normal;
-  font-size: 1em;
+  font-size: 2.2vh;
   line-height: 1.4em;
-  padding: 5px 8px;
+  padding: 6px 8px;
   transition: background-color 0.2s ease 0s;
 }
 
@@ -411,9 +414,9 @@ textarea:focus {
 
 
 #slider{
-  width: 80%;
+  width: 78%;
   margin: 0 auto;
-  height: 8px;
+  height: 1vh;
   /* color: #555555; */
   color: rgb(149, 193, 31);
 }
@@ -456,6 +459,14 @@ textarea.skeleton {
   font-optical-sizing: auto;
  
   font-style: normal;
-  font-size: 1em;
+  font-size: 2.1vh;
+}
+
+@media (max-width: 1024px) {
+  /* Further reduce padding for even smaller screens */
+  .btn {
+    font-size: 14.5px;
+    padding: 23px 23px 23px 31px
+  }
 }
 
