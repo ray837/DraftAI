@@ -261,9 +261,11 @@ function App() {
       showSnackbar('error',"No message to insert")
       return
     }
+
+    const htmlFormattedInput = input.replace(/\n/g, "<br/>");
     try{
     window.Office.context.mailbox.item.body.setAsync(
-      input,
+      htmlFormattedInput,
       { coercionType: "html" },
       function (result) {
         if (result.status === window.Office.AsyncResultStatus.Succeeded) {
