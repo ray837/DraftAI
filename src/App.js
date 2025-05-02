@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
-// import Button from '@mui/material/Button';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import InfoIcon from '@mui/icons-material/Info';
 import IconButton from '@mui/material/IconButton';
@@ -13,12 +12,7 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-// import Accordion from '@mui/material/Accordion';
-// import AccordionSummary from '@mui/material/AccordionSummary';
-// import AccordionDetails from '@mui/material/AccordionDetails';
-// import Typography from '@mui/material/Typography';
-// import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+ 
 import DriveFileMoveRtlIcon from '@mui/icons-material/DriveFileMoveRtl';
 
 function App() {
@@ -102,7 +96,7 @@ function App() {
 
   const handleSliderChange = (event, newValue) => {
     setSliderValue(newValue);
-    // console.log('Current slider value:', newValue);
+   
   };
 
   const [input, setInput] = useState();
@@ -121,7 +115,7 @@ function App() {
     setError('');
     if (input === undefined || input === '') {
       setError('"Please write a mail first"');
-      // console.log('Empty response from API');
+    
       showSnackbar('warning',"Please write a mail first")
       setLoading(false);
       return;
@@ -152,9 +146,7 @@ function App() {
           prompt = `Analyse the sentiment of the following mail : \n\n"${input}"\n\nReturn the sentiment.`;
           break;
       }
-      
-      // console.log(prompt);
-      // await sleep(2000);it
+       
       const response = await axios.post(
        'https://openrouter.ai/api/v1/chat/completions',
         {
@@ -181,10 +173,10 @@ function App() {
       console.log('Refined Text:', refined);
       if (input === undefined || input === '') {
         setError('"Please write a mail first"');
-        // console.log('Empty response from API');
+      
         showSnackbar('warning',"Please write a mail first")
         setLoading(false);
-        // return;
+      
       }
       else {
         setLoading(false);
@@ -196,12 +188,9 @@ function App() {
        
         
       }
-      // console.log(input)
-      // Check if the response is empty or not
-
-    //   setInput(refined);
+       
     } catch (err) {
-      // console.log(err)
+       
       console.error(err);
       showSnackbar('error',"Something went wrong. Please try again.")
       setError('Something went wrong. Please try again.');
@@ -216,14 +205,14 @@ function App() {
   const previousBodyRef = useRef("");
 
   useEffect(() => {
-    // console.log("if first out")
+     
     if (window.Office) {
-      // console.log("if first")
+    
       window.Office.onReady((info) => {
-        // console.log("inner outer")
+       
         if (info.host === window.Office.HostType.Outlook) {
-          // console.log("inner out")
-          startPollingBody(); // Start polling the email body
+        
+          startPollingBody(); // polling body
         }
       });
     }
@@ -231,13 +220,11 @@ function App() {
 
   const startPollingBody = () => {
     const interval = setInterval(() => {
-      // console.log("outer inner")
+      
       window.Office.context.mailbox.item.body.getAsync("text", (result) => {
         if (result.status === window.Office.AsyncResultStatus.Succeeded) {
           const body = result.value;
-          // console.log("out inner")
-
-          // console.log(previousBodyRef.current)
+           
           if (body !== previousBodyRef.current) {
             previousBodyRef.current = body;
             // console.log("inner")
@@ -245,9 +232,7 @@ function App() {
           }
         }
       });
-    }, 1800); // Adjust interval (e.g., every 2 seconds)
-
-    // Clear interval on unmount
+    }, 1800); 
     return () => clearInterval(interval);
   };
 
@@ -267,9 +252,7 @@ function App() {
     if (input.toLowerCase().includes("subject:")) {
      subject = input.split("\n",2)[0];
      console.log(subject)
-    //  console.log(input.split("\n",2))
-    //  setInput(input.split("\n").slice(1).join("\n"));
-    //  console.log("h")
+    
     processedinput=input.split("\n").slice(1).join("\n")
      console.log(processedinput)
     }else{
@@ -284,11 +267,11 @@ function App() {
       { coercionType: "html" },
       function (result) {
         if (result.status === window.Office.AsyncResultStatus.Succeeded) {
-          // console.log("Draft body updated");
+       
           showSnackbar('success',"Inserted to mail draft")
         } else {
           showSnackbar('error',result.error.message)
-          // console.error(result.error.message);
+        
         }
       }
     
@@ -314,56 +297,6 @@ function App() {
      
      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
  
-{/* <div class="container">
-  <div class="grid-features">
-    <div class="bento-card cloud">
-      <div class="bento-card-description">
-        <h2>Refine Email</h2>
-        <p>Use a pre-designed template or personalize with video, stickers, fonts, and more</p>
-      </div>
-
-      <a class="btn" href="#">
-      <span class="text">Refine My Mail</span>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.66669 11.3334L11.3334 4.66669" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.66669 4.66669H11.3334V11.3334" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    </div> 
-    <div class="bento-card logo">
-      <div class="bento-card-description">
-        <h2>Impact The Environment</h2>
-        <p>We built smart solutions for you and the children of tomorrow. All your data will be stored on smart storage</p>
-      </div>
-      <div class="bento-card-details logo">
-      </div>
-    </div> 
-    <div class="bento-card device">
-      <div class="bento-card-description">
-
-      </div>
-    </div>
-    <div class="bento-card inbox">
-      <div class="bento-card-description">
-        <h3>Inbox</h3>
-        <p>Track your gifts, group chats, and sent cards</p>
-      </div>
-      <div class="bento-card-details inbox">
-
-      </div>
-    </div>
-    <div class="bento-card device-2">
-    </div>
-    <div class="bento-card ai-gen">
-      <div class="bento-card-description">
-        <h2>AI Generates Your Route</h2>
-      </div>
-      <div class="bento-card-details ai-gen">
-
-      </div>
-    </div>
-  </div>
-  <div class="credit">
-    <a href="https://emilandersson.com/blog/how-to-design-bento-grids">Created for this blog post</a>
-  </div>
-</div> */}
      <div id="wrapper">
      {toggle && (
       <div className='col' style={{margin:"auto"}} onClick={()=>insertInputToBody()}> 
@@ -409,40 +342,9 @@ function App() {
 <textarea    placeholder="Draft a mail or let me know what i can draft for you." rows="20" name="comment[text]" id="comment_text" cols="40" class={loading ? 'skeleton' : ''} value={input} onChange={(e) => setInput(e.target.value)} autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
       
       </div>
-     {/* <div class="gallery-template-item">
-  <div class="gallery-animated-background">
-    <div class="main-masks"></div>
      
-  </div>
-</div> */}
-      
-     {/* <div id="textwrapper">
-      <textarea name="" id="lined" cols="30" rows="10">
-Hello Test
-I would like this to be on line.
-Very line.</textarea>
-      </div> */}
      <div className='col' style={{display: "flex", alignItems: 'center', justifyContent: 'center', flexDirection: 'column',marginTop:'3vh'}}>
-     {/* <Accordion id= "accordion">
-        <AccordionSummary
-          
-          aria-controls="panel1-content"
-          id="panel1-header"
-        >
-          <Typography component="span">Accordion 1</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-        <Slider
-        aria-label="Restricted values"
-        defaultValue={20}
-        getAriaValueText={valuetext}
-        step={null}
-        valueLabelDisplay="auto"
-        marks={marks}
-        id="slider"
-      />
-        </AccordionDetails>
-      </Accordion> */}
+     
       <div style={{display:"flex" ,alignItems: "center" }} id="creativity"> <h1 >Creativity</h1>  <CustomWidthTooltip title={longText} >
       <IconButton sx={{ width: 24, height: 24, paddingX:1.7,paddingY:2 }}>
       <InfoIcon sx={{ fontSize: 16 }}/>
@@ -456,11 +358,11 @@ Very line.</textarea>
   step={null}
   marks={marks}
   valueLabelDisplay="auto"
-  valueLabelFormat={valueLabelTooltip} // Controls tooltip only
-  getAriaValueText={(value) => `${value}`} // For accessibility (optional)
+  valueLabelFormat={valueLabelTooltip}  
+  getAriaValueText={(value) => `${value}`} 
   id="slider"
   sx={{
-    height: 4, // thinner track
+    height: 4, 
     '& .MuiSlider-thumb': {
       width: 12,
       height: 12,
@@ -483,12 +385,7 @@ Very line.</textarea>
     </a>
     
   </div>
-  {/* <div class="col">
-    <a class="btn light" href="#">
-      <span class="text">I'm a lovely button</span>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.66669 11.3334L11.3334 4.66669" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.66669 4.66669H11.3334V11.3334" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div> */}
+  
 </div>
     </div>
   );
