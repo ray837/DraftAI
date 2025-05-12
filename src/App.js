@@ -149,7 +149,7 @@ function App() {
        
       const response = await axios.post(
       //  'https://openrouter.ai/api/v1/chat/completions',
-       'https://llm-api.iservebetter.idfcbank.com/qwen3-14b/v1/completions',
+       'https://llm-api.iservebetter.idfcfirstbank.com/qwen3-14b/v1/completions',
         {
           // model: 'openai/gpt-3.5-turbo',
           // messages: [{ role: 'user', content: prompt }],
