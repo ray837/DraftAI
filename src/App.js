@@ -164,6 +164,7 @@ function App() {
             Authorization: `Bearer cmF5aWQuYWhtZWQ6QXBleEAxMjM0`,
           
             'Content-Type': 'application/json',
+            // 'Access-Control-Allow-Origin':'https://ray837.github.io'
           },
           
         }
