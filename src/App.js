@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+ 
 import './App.css';
 import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
@@ -9,9 +9,7 @@ import React, { useState,useEffect,useRef  } from 'react';
 import axios from 'axios';
 import { Button, Snackbar } from '@mui/material';
 import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+ 
  
 import DriveFileMoveRtlIcon from '@mui/icons-material/DriveFileMoveRtl';
 
@@ -140,7 +138,7 @@ function App() {
           prompt = `Polish the following email to enhance its tone, flow, and structure. You may slightly reword or rearrange sentences for better readability, while preserving the original message:\n\n"${input}"\n\nReturn the refined email body only.`;
           break;
         case 100:
-          prompt = `Rewrite the following email completely, keeping the core message and intent the same. Make it sound professional, well-structured, and impactful:\n\n"${input}"\n\nReturn the email body only.`;
+          prompt = `Rewrite the following email completely, keeping the core message and intent the same. Make it sound professional, well-structured, and impactful:\n\n"${input}"\n\nReturn the refined email body only.`;
           break;
         default:
           prompt = `Analyse the sentiment of the following mail : \n\n"${input}"\n\nReturn the sentiment.`;
@@ -148,36 +146,26 @@ function App() {
       }
        
       const response = await axios.post(
-      //  'https://openrouter.ai/api/v1/chat/completions',
-      //  'https://llm-api.iservebetter.idfcfirstbank.com/qwen3-14b/v1/completions',
-          // 'https://llm-api.iservebetter.idfcfirstbank.com/gemma-27b/v1/chat/completions',
+      
           "http://127.0.0.1:5000/proxy",
         {
-          // model: 'openai/gpt-3.5-turbo',
+       
           messages: [{ role: 'user', content: prompt }],
-          // temperature: 0.7,
-          // model:'/app/models/Qwen3-14B-FP8',
            model:'/app/models/gemma-3-27b-it',
-          // prompt:prompt
+    
         },
         {
           headers: {
-           
-            // Authorization: `Bearer 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`,
-            // Authorization: `Bearer cmF5aWQuYWhtZWQ6QXBleEAxMjM0`,
-          
+            
             'Content-Type': 'application/json',
-            // 'Access-Control-Allow-Origin':'https://ray837.github.io'
+            
           },
           
         }
         
       );
-    //   console.log('API KEY:', process.env.REACT_APP_OPENAI_API_KEY);
-    // Authorization: `Bearer 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`,
-    // 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
-  // Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
-  console.log(response)
+ 
+ 
       const refined = response.data.choices[0].message.content.trim();
       
       console.log('Refined Text:', refined);
@@ -242,7 +230,7 @@ function App() {
           }
         }
       });
-    }, 1800); 
+    }, 800); 
     return () => clearInterval(interval);
   };
 
@@ -300,10 +288,6 @@ function App() {
 
   return (
     <div className="App">
-
- 
-  
- 
      
      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
  
@@ -325,8 +309,6 @@ function App() {
 </div>
 )}
      <div className='col' style={{display :"block",marginTop:"2vh"}}>
-
-  
      <h2 class="heading" id="padleft"><span style={{color:'#154633'}}>Write </span><span style={{color:"#95C11F"}}>Right!</span></h2>
      </div>
     <p id="padleft" style={{fontSize:"2vh"}}>AI-Powered Email Writing Assistant</p>
@@ -347,10 +329,7 @@ function App() {
        
       />
 <div class="col" style={{marginTop:"2vh"}}>
-     
- 
-<textarea    placeholder="Draft a mail or let me know what i can draft for you." rows="20" name="comment[text]" id="comment_text" cols="40" class={loading ? 'skeleton' : ''} value={input} onChange={(e) => setInput(e.target.value)} autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
-      
+ <textarea placeholder="Draft a mail or let me know what i can draft for you." rows="20" name="comment[text]" id="comment_text" cols="40" class={loading ? 'skeleton' : ''} value={input} onChange={(e) => setInput(e.target.value)} autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>   
       </div>
      
      <div className='col' style={{display: "flex", alignItems: 'center', justifyContent: 'center', flexDirection: 'column',marginTop:'3vh'}}>
