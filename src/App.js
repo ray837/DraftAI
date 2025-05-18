@@ -148,20 +148,21 @@ function App() {
       }
        
       const response = await axios.post(
-       'https://openrouter.ai/api/v1/chat/completions',
+      //  'https://openrouter.ai/api/v1/chat/completions',
       //  'https://llm-api.iservebetter.idfcfirstbank.com/qwen3-14b/v1/completions',
         {
-          model: 'openai/gpt-3.5-turbo',
+          // model: 'openai/gpt-3.5-turbo',
           messages: [{ role: 'user', content: prompt }],
-          temperature: 0.7,
+          // temperature: 0.7,
           // model:'/app/models/Qwen3-14B-FP8',
+           model:'/app/models/gemma-3-27b-it',
           // prompt:prompt
         },
         {
           headers: {
            
-            Authorization: `Bearer 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`,
-            // Authorization: `Bearer cmF5aWQuYWhtZWQ6QXBleEAxMjM0`,
+            // Authorization: `Bearer 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`,
+            Authorization: `Bearer cmF5aWQuYWhtZWQ6QXBleEAxMjM0`,
           
             'Content-Type': 'application/json',
             // 'Access-Control-Allow-Origin':'https://ray837.github.io'
