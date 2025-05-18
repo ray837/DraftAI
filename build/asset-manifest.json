@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/DraftAI/static/css/main.5bdf8a5a.css",
-    "main.js": "/DraftAI/static/js/main.2121bccd.js",
+    "main.js": "/DraftAI/static/js/main.11458fe6.js",
     "static/js/453.f55149b5.chunk.js": "/DraftAI/static/js/453.f55149b5.chunk.js",
     "static/media/logo.svg": "/DraftAI/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/DraftAI/index.html",
     "main.5bdf8a5a.css.map": "/DraftAI/static/css/main.5bdf8a5a.css.map",
-    "main.2121bccd.js.map": "/DraftAI/static/js/main.2121bccd.js.map",
+    "main.11458fe6.js.map": "/DraftAI/static/js/main.11458fe6.js.map",
     "453.f55149b5.chunk.js.map": "/DraftAI/static/js/453.f55149b5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5bdf8a5a.css",
-    "static/js/main.2121bccd.js"
+    "static/js/main.11458fe6.js"
   ]
 }
