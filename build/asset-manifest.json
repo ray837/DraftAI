@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DraftAI/static/css/main.1110ff15.css",
+    "main.js": "/DraftAI/static/js/main.2369f793.js",
+    "static/js/453.f55149b5.chunk.js": "/DraftAI/static/js/453.f55149b5.chunk.js",
+    "index.html": "/DraftAI/index.html",
+    "main.1110ff15.css.map": "/DraftAI/static/css/main.1110ff15.css.map",
+    "main.2369f793.js.map": "/DraftAI/static/js/main.2369f793.js.map",
+    "453.f55149b5.chunk.js.map": "/DraftAI/static/js/453.f55149b5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1110ff15.css",
+    "static/js/main.2369f793.js"
+  ]
+}

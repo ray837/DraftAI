@@ -37,8 +37,10 @@ These features are controlled using a creativity slider integrated directly in t
    ```bash
    git clone <repo-link>
 
+---
 ## Setup
 After installalation :
-1.Setup from browser : https://aka.ms/olksideload 
+1. Setup from browser : https://aka.ms/olksideload 
 2. Import demo.xml as custom Add-ins
+---
 For detailed installation with screenshots and instructions, refer to `Plugin-SetUp-SOP.docx`.
