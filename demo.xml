@@ -10,7 +10,7 @@
   <DisplayName DefaultValue="WriteRight"/>
   <Description DefaultValue="AI powered inhouse plugin by IDFC First Bank."/>
   <IconUrl DefaultValue="https://ray837.github.io/DraftAI/assets/icon32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://ray837.github.io/DraftAI/assets/icon64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://ray837.github.io/DraftAI/assets/icon80.png"/>
   <!-- <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/> -->
   <AppDomains>
     <AppDomain>www.rayidahmed.netlify.app</AppDomain>
