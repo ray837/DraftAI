@@ -150,7 +150,8 @@ function App() {
       const response = await axios.post(
       //  'https://openrouter.ai/api/v1/chat/completions',
       //  'https://llm-api.iservebetter.idfcfirstbank.com/qwen3-14b/v1/completions',
-          'https://llm-api.iservebetter.idfcfirstbank.com/gemma-27b/v1/chat/completions',
+          // 'https://llm-api.iservebetter.idfcfirstbank.com/gemma-27b/v1/chat/completions',
+          "http://127.0.0.1:5000/proxy",
         {
           // model: 'openai/gpt-3.5-turbo',
           messages: [{ role: 'user', content: prompt }],
@@ -163,7 +164,7 @@ function App() {
           headers: {
            
             // Authorization: `Bearer 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`,
-            Authorization: `Bearer cmF5aWQuYWhtZWQ6QXBleEAxMjM0`,
+            // Authorization: `Bearer cmF5aWQuYWhtZWQ6QXBleEAxMjM0`,
           
             'Content-Type': 'application/json',
             // 'Access-Control-Allow-Origin':'https://ray837.github.io'
@@ -176,6 +177,7 @@ function App() {
     // Authorization: `Bearer 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`,
     // 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
   // Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+  console.log(response)
       const refined = response.data.choices[0].message.content.trim();
       
       console.log('Refined Text:', refined);
